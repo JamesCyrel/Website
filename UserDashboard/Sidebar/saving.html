@@ -1,164 +1,195 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Saving Plan</title>
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
     <!-- Chart.js CDN -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="saving.css">
-</head>
-<style>
+    <link rel="stylesheet" href="saving.css" />
+  </head>
+  <style>
     /* Sidebar styling */
     #sidebar {
-        width: 250px;
-        height: 100vh;
-        background-color: black;
-        color: white;
-        padding: 20px;
-        position: fixed;
-        left: 0;
-        transition: all 0.3s ease;
+      width: 250px;
+      height: 100vh;
+      background-color: black;
+      color: white;
+      padding: 20px;
+      position: fixed;
+      left: 0;
+      transition: all 0.3s ease;
     }
 
     /* Hide sidebar */
     #sidebar.hide {
-        transform: translateX(-250px);
+      transform: translateX(-250px);
     }
 
     /* Main content styling */
     .content {
-        margin-left: 270px;
-        padding: 20px;
-        transition: margin-left 0.3s ease;
+      margin-left: 270px;
+      padding: 20px;
+      transition: margin-left 0.3s ease;
     }
 
     /* Adjust content margin when sidebar is hidden */
     .content.expanded {
-        margin-left: 20px;
+      margin-left: 20px;
     }
 
     /* Logo styling */
     .sidebar-logo {
-        width: 100px;
-        height: auto;
-        border-radius: 50%;
+      width: 100px;
+      height: auto;
+      border-radius: 50%;
     }
 
     /* Link styling */
     .nav-link {
-        color: white;
-        margin: 10px 0;
-        display: block;
+      color: white;
+      margin: 10px 0;
+      display: block;
     }
 
     /* Button styling */
     .toggle-btn {
-        position: absolute;
-        top: 20px;
-        right: -30px;
-        background-color: #ff69b4;
-        color: white;
-        border: none;
-        border-radius: 30%;
-        width: 30px;
-        height: 30px;
-        cursor: pointer;
+      position: absolute;
+      top: 20px;
+      right: -30px;
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      border-radius: 30%;
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
     }
-</style>
-<body>
+  </style>
+  <body>
     <!-- Sidebar and Main Content -->
     <div class="d-flex">
-        <!-- Sidebar -->
-        <nav id="sidebar">
-            <!-- Logo -->
-            <div class="text-center mb-4">
-                <img src="../ImageHolder/Logo2.jpg" alt="Logo" class="sidebar-logo">
-            </div>
-            <h3 class="text-center">Menu</h3>
-            <ul class="nav flex-column">
-                <li class="nav-item">
-                    <a class="nav-link" href="../index.html">Dashboard</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="../Sidebar/Calculator.html">Start Calculator</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="../Sidebar/MonitorExpense.html">Monitor Your Expense</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="../Sidebar/saving.html">Saving Plan</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="../Sidebar/BudgetPlan.html">Budget Advices</a>
-                </li>
-               
-            </ul>
-            <button class="toggle-btn" id="toggle-btn">◀</button>
-        </nav>
-
-        <!-- Main Content - Saving Plan Section -->
-        <div class="content" id="main-content">
-            <header class="d-flex justify-content-between align-items-center mb-5">
-                <h1 class="text-black">Saving Plan</h1>
-                <a href="../Login/Login.html">
-                    <button class="btn btn-pink logout-btn">Logout</button>
-                </a>
-            </header>
-
-            <div id="saving-plan" class="content-section">
-                <div class="card shadow-sm p-3 bg-white rounded">
-                    <div class="card-body">
-                        <h2 class="card-title">Create Your Saving Plan</h2>
-                        <form id="saving-plan-form">
-                            <div class="mb-3">
-                                <label for="total-budget" class="form-label">Total Budget (₱)</label>
-                                <input type="number" class="form-control" id="total-budget" placeholder="Enter your total budget" required>
-                            </div>
-
-                            <button type="button" class="btn btn-secondary mb-3" id="add-task">Add Task</button><br>
-
-                            <!-- Emergency Fund Input -->
-                            <div class="mb-3">
-                                <label for="emergency-input" class="form-label">Emergency Fund (₱)</label>
-                                <input type="number" class="form-control" id="emergency-input" placeholder="Enter emergency fund">
-                            </div>
-
-                            <button type="submit" class="btn btn-pink">Generate Plan</button>
-                        </form>
-
-                        <!-- Task Table for Budgeting -->
-                        <div id="budget-table-container" style="display:none;">
-                            <br>
-                            <h3>Your Budget Plan</h3>
-                            <table class="table table-striped table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th>Date</th>
-                                        <th>Task</th>
-                                        <th>Amount (₱)</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="budget-table-body">
-                                    <!-- Rows will be dynamically inserted here -->
-                                </tbody>
-                            </table>
-                            <br>
-                            <h4>Emergency Fund: ₱<span id="emergency-fund"></span></h4>
-                            <h4>Remaining Funds: ₱<span id="remaining-budget"></span></h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <!-- Sidebar -->
+      <nav id="sidebar">
+        <!-- Logo -->
+        <div class="text-center mb-4">
+          <img src="../ImageHolder/Logo2.jpg" alt="Logo" class="sidebar-logo" />
         </div>
+        <h3 class="text-center">Menu</h3>
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link" href="../UserDashboard.html">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../Sidebar/Calculator.html"
+              >Start Calculator</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../Sidebar/MonitorExpense.html"
+              >Monitor Your Expense</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../Sidebar/saving.html">Saving Plan</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../Sidebar/BudgetPlan.html"
+              >Budget Advices</a
+            >
+          </li>
+          <li class="nav-item" style="margin-top: 25vh">
+            <a class="nav-link" href="../Login/Login.html">Logout</a>
+          </li>
+        </ul>
+        <button class="toggle-btn" id="toggle-btn">◀</button>
+      </nav>
+
+      <!-- Main Content - Saving Plan Section -->
+      <div class="content" id="main-content">
+        <header class="d-flex justify-content-between align-items-center mb-5">
+          <h1 class="text-black">Saving Plan</h1>
+        </header>
+
+        <div id="saving-plan" class="content-section">
+          <div class="card shadow-sm p-3 bg-white rounded">
+            <div class="card-body">
+              <h2 class="card-title">Create Your Saving Plan</h2>
+              <form id="saving-plan-form">
+                <div class="mb-3">
+                  <label for="total-budget" class="form-label"
+                    >Total Budget (₱)</label
+                  >
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="total-budget"
+                    placeholder="Enter your total budget"
+                    required
+                  />
+                </div>
+
+                <button
+                  type="button"
+                  class="btn btn-secondary mb-3"
+                  id="add-task"
+                >
+                  Add Task</button
+                ><br />
+
+                <!-- Emergency Fund Input -->
+                <div class="mb-3">
+                  <label for="emergency-input" class="form-label"
+                    >Emergency Fund (₱)</label
+                  >
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="emergency-input"
+                    placeholder="Enter emergency fund"
+                  />
+                </div>
+
+                <button type="submit" class="btn btn-pink">
+                  Generate Plan
+                </button>
+              </form>
+
+              <!-- Task Table for Budgeting -->
+              <div id="budget-table-container" style="display: none">
+                <br />
+                <h3>Your Budget Plan</h3>
+                <table class="table table-striped table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Date</th>
+                      <th>Task</th>
+                      <th>Amount (₱)</th>
+                    </tr>
+                  </thead>
+                  <tbody id="budget-table-body">
+                    <!-- Rows will be dynamically inserted here -->
+                  </tbody>
+                </table>
+                <br />
+                <h4>Emergency Fund: ₱<span id="emergency-fund"></span></h4>
+                <h4>Remaining Funds: ₱<span id="remaining-budget"></span></h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Bootstrap JS and dependencies -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Custom JS -->
     <script src="saving.js"></script>
-</body>
+  </body>
 </html>

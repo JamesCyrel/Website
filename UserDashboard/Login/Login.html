@@ -13,7 +13,7 @@
   <body>
     <div class="container" id="container">
       <div class="form-container sign-up-container">
-        <form action="./Login.html">
+        <form action="../Login/Login.html">
           <h1>Create Account</h1>
           <div class="social-container">
             <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
@@ -29,26 +29,55 @@
       </div>
 
       <div class="form-container sign-in-container">
-        <form action="../UserDashboard.html">
+        <form id="loginForm">
           <h1>Sign in</h1>
           <div class="social-container">
             <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
             <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
             <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
           </div>
-          <span>or use your account</span>
+          <span>sign in as</span>
+          <select name="role" id="role">
+            <option value="user">User</option>
+            <option value="admin">Admin</option>
+            <option value="professional">Professional</option>
+          </select>
           <input type="email" placeholder="Email" />
           <input type="password" placeholder="Password" />
           <a href="#">Forgot your password?</a>
           <button>Sign In</button>
         </form>
       </div>
+      <!-- Script for redirecting to the appropriate dashboard based on the selected role -->
+      <script>
+        document
+          .getElementById("loginForm")
+          .addEventListener("submit", function (event) {
+            event.preventDefault(); // Prevent the default form submission
+            const role = document.getElementById("role").value;
+            let actionUrl = "";
+
+            switch (role) {
+              case "admin":
+                actionUrl = "../AdminDashboard.html";
+                break;
+              case "professional":
+                actionUrl = "../ProfessionalDashboard.html";
+                break;
+              default:
+                actionUrl = "../UserDashboard.html";
+            }
+
+            // Redirect to the appropriate dashboard
+            window.location.href = actionUrl;
+          });
+      </script>
 
       <div class="overlay-container">
         <div class="overlay">
           <div class="overlay-panel overlay-left">
             <img
-              src="../../Dashboard/ImageHolder/Logo2.jpg"
+              src="../../UserDashboard/ImageHolder/Logo2.jpg"
               alt="SaveSmart Logo"
               style="
                 width: 100px;
@@ -65,7 +94,7 @@
           </div>
           <div class="overlay-panel overlay-right">
             <img
-              src="../../Dashboard/ImageHolder/Logo2.jpg"
+              src="../../UserDashboard/ImageHolder/Logo2.jpg"
               alt="SaveSmart Logo"
               style="
                 width: 100px;
