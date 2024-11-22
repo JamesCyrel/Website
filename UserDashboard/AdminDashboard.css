@@ -113,15 +113,6 @@ canvas {
   height: 400px; /* Adjust this value based on your needs */
 }
 
-/* Sidebar styling */
-#sidebar {
-}
-
-/* Hide sidebar */
-#sidebar.hide {
-  transform: translateX(-250px);
-}
-
 /* Main content styling */
 .content {
   margin-left: 270px;
