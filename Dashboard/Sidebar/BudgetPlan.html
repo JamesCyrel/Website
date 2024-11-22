@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budgeting Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./BudgetPlan.css">
+</head>
+
+<body>
+    <!-- Sidebar and Main Content -->
+    <div class="d-flex">
+        <!-- Sidebar -->
+        <nav id="sidebar">
+            <!-- Logo -->
+            <div class="text-center mb-4">
+                <img src="../ImageHolder/Logo2.jpg" alt="Logo" class="sidebar-logo">
+            </div>
+            <h3 class="text-center">Menu</h3>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" href="../index.html">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../Sidebar/Calculator.html">Start Calculator</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../Sidebar/MonitorExpense.html">Monitor Your Expense</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../Sidebar/saving.html">Saving Plan</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../Sidebar/BudgetPlan.html">Budget Advices</a>
+                </li>
+                
+            </ul>
+            <button class="toggle-btn" id="toggle-btn">◀</button>
+        </nav>
+
+        <!-- Main Content - Business Dashboard -->
+        <div class="content" id="main-content">
+            <header class="d-flex justify-content-between align-items-center mb-5">
+                <h1 class="text-black">Budget Advices</h1>
+                <a href="../Login/Login.html">
+                    <button class="btn btn-pink logout-btn">Logout</button>
+                </a>
+            </header>
+            <div class="container mt-5">
+                <div class="row justify-content-center">
+                  <div class="col-md-8">
+                    <form class="d-flex" role="search" onsubmit="searchData(event)">
+                      <input class="form-control me-2" type="search" id="searchInput" placeholder="Search" aria-label="Search">
+                      <button class="btn " type="submit">Search</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <br>
+                <!-- Tips and Suggestions -->
+                <div class="tips-suggestions mb-4">
+                    <h3>Tips & Suggestions</h3>
+                    <ul class="tips" id="tipsList">
+                        <li><span class="bullet-point">Track all your expenses to understand where your money goes.</span></li>
+                        <li><span class="bullet-point">Set a realistic budget based on your income and expenses.</span></li>
+                        <li><span class="bullet-point">Save a portion of your income for emergencies.</span></li>
+                        <li><span class="bullet-point">Review and adjust your budget regularly to meet changing needs.</span></li>
+                        <li><span class="bullet-point">Use budgeting tools and apps to keep track of your finances.</span></li>
+                        <li>
+                            <span class="bullet-point">Set Realistic Goals</span>
+                            <span class="toggle-arrow">▼</span>
+                            <div class="toggle-content">
+                                <p>Define your <strong>"WHY"</strong>: What are you budgeting for? A new house, debt freedom, a vacation? Having a clear goal helps you stay motivated.
+                                    <br>Start small: Don't try to change everything at once. Set small, achievable goals that you can build on.
+                                    <br>Be flexible: Life happens! Don't be discouraged if you have to adjust your budget sometimes. Just get back on track as soon as possible.
+                                </p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="bullet-point">Create a Budget:</span>
+                            <span class="toggle-arrow">▼</span>
+                            <div class="toggle-content">
+                                <p>Choose a method: There are many budgeting methods. The 50/30/20 method (50% needs, 30% wants, 20% savings) is a good starting point.
+                                    <br>Categorize your expenses: Group expenses into categories like housing, food, transportation, entertainment, etc.
+                                    <br>Allocate your income: Decide how much money you will spend in each category and how much you will save.
+                                </p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="bullet-point">Stick to Your Budget:</span>
+                            <span class="toggle-arrow">▼</span>
+                            <div class="toggle-content">
+                                <p>Automate savings: Set up automatic transfers from your checking account to your savings account.
+                                    <br>Make it a habit: Review your budget regularly (at least monthly). This helps you stay on top of your spending and adjust as needed.
+                                    <br>Reward yourself: Celebrate your progress! Reaching your goals is worth celebrating, even with small rewards.
+                                </p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="bullet-point">Plan for the Future:</span>
+                            <span class="toggle-arrow">▼</span>
+                            <div class="toggle-content">
+                                <p>Set long-term financial goals:  Think about what you want to achieve financially in the next 5, 10, or 20 years.
+                                    <br>Create a savings plan:  Decide how much you need to save each month to reach your goals.
+                                    <br>Consider investments:  Talk to a financial advisor about investment options that align with your risk tolerance and goals.
+                                </p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="bullet-point">Additional Tips:</span>
+                            <span class="toggle-arrow">▼</span>
+                            <div class="toggle-content">
+                                <p>
+                                    Seek professional advice: If you're struggling to budget, don't be afraid to ask for help from a financial advisor.
+                                    <br>Be patient: Building good financial habits takes time. Don't give up if you slip up sometimes. Just get back on track and keep learning!
+                                    <br>Don't be afraid to adjust your budget:  Your needs and priorities may change over time, so it's important to be flexible and adjust your budget as needed.
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- FAQ Section -->
+                <div class="faq-section">
+                    <h3>Frequently Asked Questions (FAQs)</h3>
+                    <div id="faqList">
+                        <div class="faq-item">
+                            <h4>1. How can I start budgeting?</h4>
+                            <p>Start by tracking your income and expenses. Create categories for your spending and allocate a specific amount for each category based on your financial goals.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h4>2. What if I overspend in one category?</h4>
+                            <p>If you overspend, adjust your budget for other categories. Track the overspending and identify areas where you can cut back in the future.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h4>3. How often should I review my budget?</h4>
+                            <p>Review your budget monthly or quarterly to ensure you are staying on track. Adjust your budget as necessary based on your financial situation.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h4>4. Can I use budgeting apps?</h4>
+                            <p>Yes, budgeting apps can help you track expenses, set goals, and stay within your budget. Choose an app that suits your needs and preferences.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h4>5. What budgeting method works best?</h4>
+                            <p>The 50/30/20 System.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h4>6. How will I track my expenses?</h4>
+                            <p>You can track your expenses through Spreadsheet, budgeting app, notebook.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h4>7. How will I allocate my money to different categories?</h4>
+                            <p>You need to allocate first for your housing/rent expenses, food, transportation, entertainment, savings, and debt repayment.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h4>8. What are some areas where I can cut back on spending?</h4>
+                            <p>You can cut your expenses from dining out, regular subscriptions, expenses for entertainments and such.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h4>9. What are the possible biggest spending temptations?</h4>
+                            <p>By identify factors that triggers you want to spend and develop strategies to resist.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h4>10. What should I do to stay motivated to stick to my budget?</h4>
+                            <p>Try to set rewards, track your progress, find a budgeting buddy to motivate you in spending less.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h4>11. How can I make budgeting a habit?</h4>
+                            <p>Practice to integrate it into your routine, look for a goal that can motivate you in saving.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h4>12. What should be my financial goals for the next 5, 10, or 20 years?</h4>
+                            <p>By starting to monitor your expenses and savings today, you can achieve homeownership, starting a business, spoiling yourself.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h4>13. How will I save for my goals?</h4>
+                            <p>It is better for you to have a different account for a specific purpose. Like saving for emergency fund, retirement accounts, investment accounts, and other.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const sidebar = document.getElementById('sidebar');
+        const toggleBtn = document.getElementById('toggle-btn');
+        const content = document.getElementById('main-content');
+        const logoutBtn = document.querySelector('.logout-btn'); // Add this to target the logout button
+
+        toggleBtn.addEventListener('click', () => {
+            // Toggle the 'hide' class on the sidebar
+            sidebar.classList.toggle('hide');
+
+            // Toggle the 'expanded' class on the content
+            content.classList.toggle('expanded');
+
+            // Change button symbol
+            toggleBtn.textContent = sidebar.classList.contains('hide') ? '▶' : '◀';
+            if (sidebar.classList.contains('hide')) {
+                logoutBtn.classList.add('expanded');
+            } else {
+                logoutBtn.classList.remove('expanded');
+            }
+        });
+    </script>
+    <!-- Custom JavaScript for Searching Tips and FAQ -->
+    <script>
+        function searchData(event) {
+            event.preventDefault(); // Prevent form from submitting and refreshing the page
+            const searchQuery = document.getElementById('searchInput').value.toLowerCase();
+            
+            // Search through Tips & Suggestions
+            const tipsList = document.getElementById('tipsList').getElementsByTagName('li');
+            for (let tip of tipsList) {
+                const text = tip.textContent.toLowerCase();
+                tip.style.display = text.includes(searchQuery) ? '' : 'none';
+            }
+
+            // Search through FAQs
+            const faqList = document.getElementById('faqList').getElementsByClassName('faq-item');
+            for (let faq of faqList) {
+                const text = faq.textContent.toLowerCase();
+                faq.style.display = text.includes(searchQuery) ? '' : 'none';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+        const toggleArrows = document.querySelectorAll('.toggle-arrow');
+        
+        toggleArrows.forEach(arrow => {
+            arrow.addEventListener('click', function() {
+                const content = this.nextElementSibling; // Get the content below the arrow
+                const isVisible = content.style.display === 'block';
+
+                // Toggle the display of the content
+                content.style.display = isVisible ? 'none' : 'block';
+
+                // Toggle the arrow rotation by adding/removing the 'active' class
+                this.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+    <script src="BudgetPlan.js"></script>
+</body>
+</html>

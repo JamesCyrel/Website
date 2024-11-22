@@ -1,0 +1,213 @@
+/* Budget Plan Styles */
+#budget-plan {
+    padding: 20px;
+}
+
+.tips-suggestions, .faq-section, .tips{
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+}
+/* Increase the font size for bullet points and FAQ headings */
+.bullet-point, .faq-item h5 {
+    font-size: 30px; /* Larger font for bullet points and FAQs */
+    line-height: 1.5; /* Add some line height for better readability */
+    color: #333; /* A dark color for better contrast */
+}
+
+.tips-suggestions h3, .faq-section h3 {
+    color: #ff69b4;
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.faq-item, .toggle-content p{
+    margin-bottom: 10px;
+    font-size: 18px; /* Larger font for FAQ answers and expanded content */
+    color: #555; /* Slightly lighter than the bullet points */
+}
+/* Adjust the arrow for better visibility */
+.toggle-arrow {
+    font-size: 18px; /* Adjust the size of the toggle arrow */
+    margin-left: 10px;
+    color: #ff69b4;
+}
+.faq-item h4 {
+    color: #ff69b4;
+    font-size: 30px;
+}
+
+.faq-item p {
+    margin: 0;
+}
+
+/* General body and background */
+body {
+    font-family: Arial, sans-serif;
+    background-color: white;
+}
+
+#sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 250px;
+    transition: width 0.2s ease;
+    height: 100vh;
+    background-color: black;
+    color: white;
+    padding: 20px;
+    position: fixed;
+    left: 0;
+    transition: all 0.3s ease;
+}
+#sidebar .sidebar-logo {
+    width: 60px;      
+    height: 60px;      
+    border-radius: 50%; 
+    object-fit: cover; 
+    margin: 0 auto;  
+    display: block;  
+}
+
+
+.container-fluid {
+    margin-left: 250px;
+    padding: 20px;
+}
+
+/* Styling for links */
+.nav-link {
+    padding: 15px;
+    margin: 5px 0;
+    background-color: #333;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+}
+
+.nav-link:hover {
+    background-color: #ff69b4;
+    color: black;
+    transition: all 0.4s;
+}
+
+.nav-link.active {
+    background-color: #ff69b4;
+}
+
+/* Text and button color palette */
+.text-pink {
+    color: #ff69b4;
+}
+
+.btn-pink {
+    background-color: #ff69b4;
+    color: white;
+    border: none;
+}
+
+.btn-pink:hover {
+    background-color: #ff85c2;
+}
+/* Logout button fixed to the upper-right corner when sidebar is hidden */
+.logout-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    transition: all 0.3s ease;
+}
+
+/* Card styles */
+.card {
+    border: none;
+    background-color: white;
+    color: black;
+}
+
+.card-title {
+    color: #ff69b4;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    #sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+    .container-fluid {
+        margin-left: 0;
+    }
+}
+
+/* Main content area */
+.main-content {
+    margin-left: 250px; /* Adjust this to match the width of the sidebar */
+    padding: 20px;
+    transition: margin-left 0.2s ease;
+}
+    
+
+    /* Hide sidebar */
+    #sidebar.hide {
+        transform: translateX(-250px);
+    }
+
+    /* Main content styling */
+    .content {
+        margin-left: 270px;
+        padding: 20px;
+        transition: margin-left 0.3s ease;
+    }
+
+    /* Adjust content margin when sidebar is hidden */
+    .content.expanded {
+        margin-left: 20px;
+    }
+
+    
+
+    /* Button styling */
+    .toggle-btn {
+        position: absolute;
+        top: 20px;
+        right: -30px;
+        background-color: #ff69b4;
+        color: white;
+        border: none;
+        border-radius: 30%;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+    }
+    .btn{
+        background-color: #ff69b4;
+        color: white;
+    }
+    .btn:hover {
+        background-color: #ff85c2;
+        color: white;
+    }
+    /* Hide toggle content by default */
+.toggle-content {
+    display: none;
+    padding-left: 20px;
+}
+
+/* Bullet points style */
+.bullet-point {
+    font-weight: bold;
+}
+
+/* Style for the toggle arrow */
+.toggle-arrow {
+    cursor: pointer;
+    margin-left: 10px;
+    color: #ff69b4;
+}
+
+/* Active arrow when the content is visible */
+.toggle-arrow.active {
+    transform: rotate(180deg); /* Rotate the arrow */
+}

@@ -1,0 +1,141 @@
+/* General body and background */
+body {
+    font-family: Arial, sans-serif;
+    background-color: white;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Disable horizontal scrolling */
+}
+
+/* Button styles */
+.btn-pink {
+    background-color: #ff69b4;
+    color: white;
+    border: none;
+}
+
+.btn-pink:hover {
+    background-color: #ff85c2;
+}
+/* Logout button fixed to the upper-right corner when sidebar is hidden */
+.logout-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    transition: all 0.3s ease;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border: none;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+/* Card styles */
+.card {
+    border: none;
+    background-color: white;
+    color: black;
+    max-width: 100%; /* Ensure cards don't exceed the container's width */
+}
+
+.card-title {
+    color: #ff69b4;
+}
+
+/* Sidebar styles */
+#sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 250px;
+    background-color: black;
+    color: white;
+    padding: 20px;
+    transition: width 0.2s ease;
+}
+
+#sidebar h3 {
+    color: white;
+    text-align: center;
+}
+
+#sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#sidebar .nav-link {
+    color: white;
+    margin: 5px 0;
+    padding: 15px;
+    background-color: #333;
+    text-align: center;
+    border-radius: 5px;
+}
+
+#sidebar .nav-link:hover {
+    background-color: #ff69b4;
+    color: black;
+    transition: all 0.4s;
+}
+
+#sidebar .nav-link.active {
+    background-color: #ff69b4;
+}
+
+#sidebar .sidebar-logo {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto;
+    display: block;
+}
+
+/* Main content area */
+.container-fluid {
+    margin-left: 270px; /* Adjust this to match the sidebar width */
+    padding: 20px;
+    transition: margin-left 0.2s ease;
+    max-width: calc(100% - 270px); /* Ensure content never exceeds the available width */
+    overflow-x: hidden; /* Disable any horizontal overflow within the content area */
+}
+
+
+.card {
+    width: 100%; /* Make cards responsive */
+}
+
+/* Chart container responsive */
+.chart-container {
+    width: 100%;
+    max-width: 100%;
+}
+
+/* Responsive Design Adjustments */
+@media (max-width: 768px) {
+    #sidebar {
+        width: 60px;
+    }
+    .container-fluid {
+        margin-left: 70px; /* Adjust for smaller sidebar width */
+        max-width: calc(100% - 70px); /* Ensure content fits within the screen */
+    }
+}
+.table th, .table td {
+    text-align: center;
+    font-size: 1.1em;
+}
+
+.table thead th {
+    background-color: #ff69b4;
+    color: white;
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
