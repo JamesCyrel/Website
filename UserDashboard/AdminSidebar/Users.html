@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Users Management</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="Users.css" />
+  </head>
+  <body>
+    <div class="d-flex">
+      <!-- Sidebar -->
+      <nav id="sidebar">
+        <div class="text-center mb-4">
+          <img src="../ImageHolder/Logo2.jpg" alt="Logo" class="sidebar-logo" />
+        </div>
+        <h3 class="text-center">Menu</h3>
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link" href="../AdminDashboard.html">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Users</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="Reports.html">Reports</a>
+          </li>
+          <li class="nav-item" style="margin-top: 290px">
+            <a class="nav-link" href="../Login/Login.html">Logout</a>
+          </li>
+        </ul>
+        <button class="toggle-btn" id="toggle-btn">◀</button>
+      </nav>
+
+      <!-- Main Content -->
+      <div class="content" id="main-content">
+        <header
+          class="d-flex justify-content-between align-items-center pt-3 pb-2 mb-3 border-bottom"
+        >
+          <h1 class="h2">Users Management</h1>
+        </header>
+        <!-- Users Table or Content -->
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>John Doe</td>
+                <td>john@example.com</td>
+                <td>Admin</td>
+                <td>
+                  <button class="btn btn-sm btn-primary">Edit</button>
+                  <button class="btn btn-sm btn-danger">Delete</button>
+                </td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Jane Smith</td>
+                <td>jane@example.com</td>
+                <td>User</td>
+                <td>
+                  <button class="btn btn-sm btn-primary">Edit</button>
+                  <button class="btn btn-sm btn-danger">Delete</button>
+                </td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Alice Johnson</td>
+                <td>alice@example.com</td>
+                <td>User</td>
+                <td>
+                  <button class="btn btn-sm btn-primary">Edit</button>
+                  <button class="btn btn-sm btn-danger">Delete</button>
+                </td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>Bob Brown</td>
+                <td>bob@example.com</td>
+                <td>User</td>
+                <td>
+                  <button class="btn btn-sm btn-primary">Edit</button>
+                  <button class="btn btn-sm btn-danger">Delete</button>
+                </td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>Charlie Davis</td>
+                <td>charlie@example.com</td>
+                <td>User</td>
+                <td>
+                  <button class="btn btn-sm btn-primary">Edit</button>
+                  <button class="btn btn-sm btn-danger">Delete</button>
+                </td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td>Diana White</td>
+                <td>diana@example.com</td>
+                <td>Professional</td>
+                <td>
+                  <button class="btn btn-sm btn-primary">Edit</button>
+                  <button class="btn btn-sm btn-danger">Delete</button>
+                </td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td>Ethan Green</td>
+                <td>ethan@example.com</td>
+                <td>Professional</td>
+                <td>
+                  <button class="btn btn-sm btn-primary">Edit</button>
+                  <button class="btn btn-sm btn-danger">Delete</button>
+                </td>
+              </tr>
+              <tr>
+                <td>8</td>
+                <td>Fiona Black</td>
+                <td>fiona@example.com</td>
+                <td>Professional</td>
+                <td>
+                  <button class="btn btn-sm btn-primary">Edit</button>
+                  <button class="btn btn-sm btn-danger">Delete</button>
+                </td>
+              </tr>
+              <tr>
+                <td>9</td>
+                <td>George Blue</td>
+                <td>george@example.com</td>
+                <td>User</td>
+                <td>
+                  <button class="btn btn-sm btn-primary">Edit</button>
+                  <button class="btn btn-sm btn-danger">Delete</button>
+                </td>
+              </tr>
+              <tr>
+                <td>10</td>
+                <td>Hannah Red</td>
+                <td>hannah@example.com</td>
+                <td>User</td>
+                <td>
+                  <button class="btn btn-sm btn-primary">Edit</button>
+                  <button class="btn btn-sm btn-danger">Delete</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      const sidebar = document.getElementById("sidebar");
+      const toggleBtn = document.getElementById("toggle-btn");
+      const content = document.getElementById("main-content");
+
+      toggleBtn.addEventListener("click", () => {
+        // Toggle the 'hide' class on the sidebar
+        sidebar.classList.toggle("hide");
+
+        // Toggle the 'expanded' class on the content
+        content.classList.toggle("expanded");
+
+        // Change button symbol
+        toggleBtn.textContent = sidebar.classList.contains("hide") ? "▶" : "◀";
+      });
+    </script>
+  </body>
+</html>
